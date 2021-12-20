@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: redis
+  labels:
+    app: redis
+spec:
+  serviceName: redis
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis
+  podManagementPolicy: 'Parallel'
+  template:
+    metadata:
+      labels:
+        app: redis
+    spec:
+      containers:
+        - name: redis
+          image: redis:latest
+          command:
+            - redis-server
+          resources:
+            requests:
+              memory: 1Gi
+              cpu: 0.1
+          ports:
+            - containerPort: 6379
+              name: redis
+          volumeMounts:
+            - name: redis-data
+              mountPath: /data
+              readOnly: false
+          env:
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: status.podIP
+        {{- if .Values.metrics }}
+        - name: redis-exporter
+          image: oliver006/redis_exporter:latest
+          resources:
+            requests:
+              memory: 100Mi
+              cpu: 0.1
+          ports:
+            - name: metrics
+              containerPort: 9121
+        {{- end }}
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchLabels:
+                  app: redis
+              topologyKey: kubernetes.io/hostname
+  volumeClaimTemplates:
+    - metadata:
+        name: redis-data
+      spec:
+        accessModes: ['ReadWriteOnce']
+        storageClassName: redis-gp3
+        resources:
+          requests:
+            storage: 5Gi
