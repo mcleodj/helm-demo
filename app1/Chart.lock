@@ -1,0 +1,9 @@
+dependencies:
+- name: nginx
+  repository: https://raw.githubusercontent.com/mcleodj/helm-demo/main
+  version: 0.1.0
+- name: redis
+  repository: https://raw.githubusercontent.com/mcleodj/helm-demo/main
+  version: 0.1.0
+digest: sha256:81f41d2aaa438dd1807fd1b94057219e5dc61a7db49cdc8f0de4369309757404
+generated: "2021-12-20T10:07:45.766861Z"
