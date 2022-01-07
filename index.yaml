@@ -3,7 +3,7 @@ entries:
   app1:
   - apiVersion: v2
     appVersion: 1.2.3
-    created: "2021-12-20T10:08:03.905233Z"
+    created: "2022-01-07T15:04:20.79149Z"
     dependencies:
     - name: nginx
       repository: https://raw.githubusercontent.com/mcleodj/helm-demo/main
@@ -21,7 +21,17 @@ entries:
   nginx:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2021-12-20T10:08:03.905504Z"
+    created: "2022-01-07T15:04:20.791979Z"
+    description: A Helm chart for Kubernetes
+    digest: 24a1dcacb197ab0aaf67590bcabd545fc0e3248c19ecfa986b6d3f6530f03056
+    name: nginx
+    type: application
+    urls:
+    - nginx-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-01-07T15:04:20.791737Z"
     description: A Helm chart for Kubernetes
     digest: 48e60a86d04d9aaf7d18bdce1519dbf78ce9391f620b8101aff6326c4a29c16b
     name: nginx
@@ -32,7 +42,7 @@ entries:
   redis:
   - apiVersion: v2
     appVersion: latest
-    created: "2021-12-20T10:08:03.905856Z"
+    created: "2022-01-07T15:04:20.792923Z"
     description: A Very Simple Helm chart for redis
     digest: e9b9c58ca863bee993d7c7486ff748f57d21a71b0ea00c9e4bb825ef45628282
     name: redis
@@ -40,4 +50,4 @@ entries:
     urls:
     - redis-0.1.0.tgz
     version: 0.1.0
-generated: "2021-12-20T10:08:03.904477Z"
+generated: "2022-01-07T15:04:20.790103Z"
