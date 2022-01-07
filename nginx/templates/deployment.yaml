@@ -21,3 +21,17 @@ spec:
             - name: http
               containerPort: 80
               protocol: TCP
+          env:
+            - name: DRINK
+              value: {{ .Values.drink }}
+          volumeMounts:
+            - mountPath: /etc/nginx/templates
+              name: simples-config
+              readOnly: true
+      volumes:
+        - name: simples-config
+          configMap:
+            name: simples-config
+            items:
+              - key: simples.conf
+                path: default.conf.template
