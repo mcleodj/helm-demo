@@ -3,7 +3,7 @@ entries:
   app1:
   - apiVersion: v2
     appVersion: 1.2.3
-    created: "2022-01-07T15:04:20.79149Z"
+    created: "2022-05-20T10:59:21.788134+01:00"
     dependencies:
     - name: nginx
       repository: https://raw.githubusercontent.com/mcleodj/helm-demo/main
@@ -21,7 +21,7 @@ entries:
   nginx:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2022-01-07T15:04:20.791979Z"
+    created: "2022-05-20T10:59:21.78925+01:00"
     description: A Helm chart for Kubernetes
     digest: 24a1dcacb197ab0aaf67590bcabd545fc0e3248c19ecfa986b6d3f6530f03056
     name: nginx
@@ -31,7 +31,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2022-01-07T15:04:20.791737Z"
+    created: "2022-05-20T10:59:21.788685+01:00"
     description: A Helm chart for Kubernetes
     digest: 48e60a86d04d9aaf7d18bdce1519dbf78ce9391f620b8101aff6326c4a29c16b
     name: nginx
@@ -39,10 +39,52 @@ entries:
     urls:
     - nginx-0.1.0.tgz
     version: 0.1.0
+  prometheus:
+  - annotations:
+      weave.works/category: Observability
+      weave.works/layer: layer-1
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://github.com/prometheus-community/helm-charts
+        - name: Upstream Project
+          url: https://github.com/prometheus-operator/kube-prometheus
+      weave.works/operator: "true"
+      weave.works/profile: prometheus
+      weave.works/profile-ci: |
+        - "gke"
+        - "kind"
+    apiVersion: v2
+    created: "2022-05-20T10:59:21.816635+01:00"
+    dependencies:
+    - condition: kube-prometheus-stack.enabled
+      name: kube-prometheus-stack
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 19.2.2
+    description: A Weaveworks Helm chart for observability
+    digest: db87083c13531846036ac4905b612fd9e2521a5a2644d671508c234ce4d27719
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/prometheus/prometheus.github.io/master/assets/prometheus_logo-cb55bb5c346.png
+    keywords:
+    - operator
+    - prometheus
+    - kube-prometheus
+    - observability
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: prometheus
+    sources:
+    - https://github.com/prometheus-community/helm-charts
+    - https://github.com/prometheus-operator/kube-prometheus
+    type: application
+    urls:
+    - prometheus-0.0.11.tgz
+    version: 0.0.11
   redis:
   - apiVersion: v2
     appVersion: latest
-    created: "2022-01-07T15:04:20.792923Z"
+    created: "2022-05-20T10:59:21.817229+01:00"
     description: A Very Simple Helm chart for redis
     digest: e9b9c58ca863bee993d7c7486ff748f57d21a71b0ea00c9e4bb825ef45628282
     name: redis
@@ -50,4 +92,4 @@ entries:
     urls:
     - redis-0.1.0.tgz
     version: 0.1.0
-generated: "2022-01-07T15:04:20.790103Z"
+generated: "2022-05-20T10:59:21.786768+01:00"
